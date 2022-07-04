@@ -20,7 +20,7 @@ futures = "0.3.9"
 hbbft = { git = "https://github.com/fedimint/hbbft", branch = "minimint" }
 hex = "0.4.2"
 itertools = "0.10.0"
-minimint-api = { path = "../minimint-api" }
+minimint-api = { path = "../minimint-api", features = ["rocksdb"] }
 minimint-core = { path = "../minimint-core" }
 minimint-derive = { path = "../minimint-derive" }
 minimint-wallet = { path = "../modules/minimint-wallet", features = ["native"] }
@@ -29,6 +29,7 @@ opentelemetry-jaeger = { version = "0.16.0", optional = true }
 rand = "0.6.5"
 rayon = "1.5.0"
 secp256k1-zkp = { version = "0.6.0", features = [ "global-context", "bitcoin_hashes" ] }
+rocksdb = { git = "https://github.com/fedimint/rust-rocksdb", branch = "minimint"}
 serde = { version = "1.0.118", features = [ "derive" ] }
 serde_json = "1.0.61"
 sha3 = "0.9.1"

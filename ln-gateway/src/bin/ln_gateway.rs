@@ -50,10 +50,8 @@ async fn main() -> tide::Result<()> {
     let cfg_path = opts.workdir.join("gateway.json");
     let db_path = opts.workdir.join("gateway.db");
     let cfg: LnGatewayConfig = load_from_file(&cfg_path);
-    let db = sled::open(&db_path)
-        .unwrap()
-        .open_tree("mint-client")
-        .unwrap();
+    let db: rocksdb::OptimisticTransactionDB<rocksdb::SingleThreaded> =
+        rocksdb::OptimisticTransactionDB::open_default(&db_path).unwrap();
 
     let gateway = LnGateway::from_config(Box::new(db), cfg).await;
 
